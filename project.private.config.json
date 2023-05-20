@@ -14,6 +14,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "Detail",
+          "pathName": "pages/video-detile/videoDetail",
+          "query": "id=14620101",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

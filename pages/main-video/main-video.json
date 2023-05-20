@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "videoitem": "/components/video-list-item/video-list-item"
+  },
+  "enablePullDownRefresh": true
 }

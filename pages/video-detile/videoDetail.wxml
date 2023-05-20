@@ -1,0 +1,36 @@
+<!-- 需求一:播放适配 -->
+<wxs src="/utils/formart.wxs" module="fmt" />
+<video  class="play" src="{{mvurl}}" style="width: 100%;" autoplay="true"  />
+
+<view class="info">
+  <!-- mv信息展示 -->
+  <view class="infoWrapper">
+    <view class="songname">
+      {{mvinfo.name}}
+    </view>
+    <view class="peopername">
+      {{mvinfo.artistName}}-
+    </view>
+    <view class="play">
+      <text class="playCount">{{fmt.Count(mvinfo.playCount) }}次播放 - {{ mvinfo.publishTime}}</text>
+    </view>
+  </view>
+  <!-- 推荐mv -->
+  <view class="title">
+    推荐视频
+  </view>
+
+  <view class="realtedmv">
+    <block wx:for="{{relatedmv}}" wx:key="vid">
+      <view class="inner">
+        <view class="left">
+          <image class="img" src="{{item.coverUrl}}" mode="widthFix" />
+        </view>
+        <view class="realtedinfo">
+          {{item.title}}
+        </view>
+
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,2 +1,5 @@
-<!--pages/main-video/main-video.wxml-->
-<text>pages/main-video/main-video.wxml</text>
+<view class="videoWrapper">
+  <view class="voideitem" wx:for="{{topmvres}}" wx:key="id">
+    <videoitem itemData="{{item}}" ></videoitem>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<wxs src="/utils/formart.wxs" module="fmt" />
+<view class="item" bindtap="itemclick">
+  <view class="album">
+    <image class="image" src="{{itemData.cover}}" mode="widthFix" />
+    <view class="info">
+      <view class="playCount">
+        {{ fmt.Count(itemData.playCount) }}
+      </view>
+      <view class="duration">
+        {{fmt.formatDuration(itemData.mv.videos[0].duration)}}
+      </view>
+    </view>
+  </view>
+  <view class="name">
+    {{itemData.name}}-{{itemData.artistName}}
+  </view>
+
+</view>

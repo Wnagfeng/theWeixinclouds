@@ -1,0 +1,35 @@
+ function Count(playcount) {
+   playcount = Number(playcount);
+   if (playcount > 1000000) {
+     return (playcount / 1000000).toFixed(1) + "亿"
+   } else if (playcount >= 10000) {
+     return (playcount / 10000).toFixed(1) + "万"
+   } else {
+     playcount
+   }
+ }
+
+
+ function padLeftZero(str) {
+  str = str.toString()
+  return ("00" + str).slice(str.length);
+}
+
+
+
+function formatDuration(duration, isMilliseconds) {
+  isMilliseconds = isMilliseconds === undefined
+  if (isMilliseconds) {
+    duration = duration / 1000
+  }
+
+  var minute = Math.floor(duration / 60)
+  var second = Math.floor(duration) % 60
+
+  return padLeftZero(minute) + ":" + padLeftZero(second)
+}
+
+ module.exports = {
+   Count: Count,
+   formatDuration: formatDuration
+ }

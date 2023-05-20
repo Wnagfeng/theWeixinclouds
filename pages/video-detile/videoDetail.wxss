@@ -1,0 +1,53 @@
+/* pages/video-detile/videoDetail.wxss */
+.play{
+  z-index: 9999;
+  width: 100%;
+  top: 0;
+  position: fixed;
+}
+page{
+  padding-top: 450rpx;
+}
+.info{
+  
+  padding: 20rpx;
+
+}
+.infoWrapper .songname{
+  font-weight: 1000;
+  font-size: 40rpx;
+}
+.infoWrapper .peopername{
+  font-size: 30rpx;
+  color: darkgray;
+}
+.infoWrapper .play .playCount{
+  font-size: 30rpx;
+  color: darkgray;
+}
+.info .title{
+  font-weight: 540;
+  margin-top: 40rpx;
+  font-size: 35rpx;
+}
+.info .realtedmv{
+  width: 100%;
+}
+.info .realtedmv .inner{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.info .realtedmv .left{
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 16rpx;
+  width: 40%;
+}
+.info .realtedmv .realtedinfo{
+  margin-left: 25rpx;
+}
+.info .realtedmv .left .img{
+  width: 100%;
+}

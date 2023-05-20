@@ -1,16 +1,18 @@
 {
   "pages": [
     "pages/main-music/main-music",
-    "pages/main-video/main-video"
+    "pages/main-video/main-video",
+    "pages/video-detile/videoDetail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "往抑云",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/main-music/main-music",
         "text": "音乐",
         "iconPath": "assets/images/tabbar/music_normal.png",
