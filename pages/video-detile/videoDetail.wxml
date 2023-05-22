@@ -1,6 +1,6 @@
 <!-- 需求一:播放适配 -->
 <wxs src="/utils/formart.wxs" module="fmt" />
-<video  class="play" src="{{mvurl}}" style="width: 100%;" autoplay="true"  />
+<video  class="playvideo" src="{{mvurl}}" style="width: 100%;" autoplay="true"   referrer-policy="origin"/>
 
 <view class="info">
   <!-- mv信息展示 -->
@@ -12,7 +12,7 @@
       {{mvinfo.artistName}}-
     </view>
     <view class="play">
-      <text class="playCount">{{fmt.Count(mvinfo.playCount) }}次播放 - {{ mvinfo.publishTime}}</text>
+      {{fmt.Count(mvinfo.playCount) }}次播放 - {{ mvinfo.publishTime}}
     </view>
   </view>
   <!-- 推荐mv -->

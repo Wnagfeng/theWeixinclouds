@@ -1,0 +1,2 @@
+
+<van-search shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" bind:click-input="onsearchCLick" focus="true"/>

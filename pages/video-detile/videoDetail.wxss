@@ -1,5 +1,5 @@
 /* pages/video-detile/videoDetail.wxss */
-.play{
+.playvideo{
   z-index: 9999;
   width: 100%;
   top: 0;
@@ -21,7 +21,7 @@ page{
   font-size: 30rpx;
   color: darkgray;
 }
-.infoWrapper .play .playCount{
+.infoWrapper .play {
   font-size: 30rpx;
   color: darkgray;
 }

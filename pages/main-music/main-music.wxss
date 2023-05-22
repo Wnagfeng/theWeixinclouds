@@ -1,1 +1,14 @@
 /* pages/main-music/main-music.wxss */
+.Musicwrapper{
+  padding: 30rpx;
+}
+.banner .imgs{
+  width: 100%;
+  
+}
+.banner{
+  transform:translateY(0);
+  border-radius: 18rpx;
+  overflow: hidden;
+  margin-top: 20rpx;
+}

@@ -1,2 +1,17 @@
-<!--pages/main-music/main-music.wxml-->
-<text>pages/main-music/main-music.wxml</text>
+<view class="Musicwrapper">
+  <view class="search">
+    <van-search shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" bind:click-input="onsearchCLick" />
+  </view>
+  <view class="banner">
+    <swiper indicator-dots autoplay circular style="height: {{bannerHeight}}px;">
+      <block wx:for="{{banners}}" wx:key="targetId">
+        <swiper-item>
+          <image bindload="onimgelod" class="imgs" src="{{item.imageUrl}}" mode="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="section">
+    <sectionheader title="推荐歌曲" bind:moreCLick="onrecommendMoreClick"></sectionheader>
+  </view>
+</view>
