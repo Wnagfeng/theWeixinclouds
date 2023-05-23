@@ -2,7 +2,7 @@
 <view class="header">
   <view class="title">{{title}}</view>
   <view class="more" bindtap="onmoreClick" wx:if="{{isshowmore}}">
-    <view class="moretext " >更多</view>
+    <view class="moretext ">更多</view>
     <van-icon name="arrow" />
   </view>
 </view>

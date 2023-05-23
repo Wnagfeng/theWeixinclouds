@@ -1,0 +1,21 @@
+/* components/playList-v1/playlistv1.wxss */
+.playlistV1wrapper{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.playlistV1wrapper .img{
+  overflow: hidden;
+  width: 30%;
+}
+.playlistV1wrapper .img image{
+  border-radius: 20rpx;
+  width: 100%;
+  height: 100%;
+}
+.playlistV1wrapper .info{
+  margin-left: 20rpx;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,14 @@
+/* pages/songListDetalile/songListDetalile.wxss */
+page{
+  box-sizing: border-box;
+  padding: 24rpx;
+}
+.list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.songitem{
+  width: 49%;
+
+}

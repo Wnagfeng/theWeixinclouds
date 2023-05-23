@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "areaheader":"/components/area-header/area-header",
+    "songitem":"/components/houtlistItem/houtlistitem"
+  }
+}

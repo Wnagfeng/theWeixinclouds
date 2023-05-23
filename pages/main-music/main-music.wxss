@@ -1,13 +1,15 @@
 /* pages/main-music/main-music.wxss */
-.Musicwrapper{
+.Musicwrapper {
   padding: 30rpx;
 }
-.banner .imgs{
+
+.banner .imgs {
   width: 100%;
-  
+
 }
-.banner{
-  transform:translateY(0);
+
+.banner {
+  transform: translateY(0);
   border-radius: 18rpx;
   overflow: hidden;
   margin-top: 20rpx;

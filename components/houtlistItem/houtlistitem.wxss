@@ -1,0 +1,32 @@
+/* components/houtlistItem/houtlistitem.wxss */
+.houtitemlistwrapper {
+  margin-top: 40rpx;
+}
+
+.houtitemlistwrapper .image {
+
+  position: relative;
+}
+
+.houtitemlistwrapper .playCount {
+  position: absolute;
+  bottom: 8rpx;
+  right: 0;
+  background-color: rgb(105, 105, 105, .7);
+  border-radius: 10rpx;
+  color: aliceblue;
+}
+
+.houtitemlistwrapper .image image {
+  border-radius: 20rpx;
+  width: 100%;
+}
+
+.houtitemlistwrapper .info .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}

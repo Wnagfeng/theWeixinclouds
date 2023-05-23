@@ -1,0 +1,14 @@
+<!--pages/songListDetalile/songListDetalile.wxml-->
+<view class="wrapper">
+  <block wx:for="{{songlistdetail}}" wx:key="cat">
+    <areaheader title="{{item.cat}}" isshowmore="{{false}}" ></areaheader>
+    <view class="list">
+      <block wx:for="{{item.playlists}}" wx:for-item="iten" wx:key="id">
+        <view class="songitem">
+          <songitem itemData="{{iten}}"></songitem>
+        </view>
+      </block>
+    </view>
+  </block>
+
+</view>

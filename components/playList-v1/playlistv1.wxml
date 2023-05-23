@@ -1,0 +1,15 @@
+<!--components/playList-v1/playlistv1.wxml-->
+<view class="playlistV1wrapper">
+  <view class="img">
+    <image src="{{itemdata.al.picUrl}}" mode="widthFix" />
+  </view>
+  <view class="info">
+    <view class="name">
+    <view class="songname">{{itemdata.name}}</view>
+    <view class="target">{{itemdata.ar[0].name}}</view>
+  </view>
+  <view class="icon">
+    <van-icon name="arrow" />
+  </view>
+  </view>
+</view>

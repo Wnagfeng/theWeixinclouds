@@ -11,7 +11,18 @@
       </block>
     </swiper>
   </view>
+  <!-- 推荐的歌曲的标题 -->
   <view class="section">
     <sectionheader title="推荐歌曲" bind:moreCLick="onrecommendMoreClick"></sectionheader>
   </view>
+  <!-- 推荐的歌曲展示 -->
+  <view class="playlist">
+    <block wx:for="{{recommendlist}}" wx:key="id">
+      <playlistV1 itemdata="{{item}}"></playlistV1>
+    </block>
+  </view>
+  <!-- 歌单的展示 -->
+  <houtlist itemdata="{{houtplaylist}}" title="热门歌单"></houtlist>
+  <houtlist itemdata="{{recMenulist}}" title="推荐歌单"></houtlist>
 </view>
+

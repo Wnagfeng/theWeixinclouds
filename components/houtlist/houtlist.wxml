@@ -1,0 +1,11 @@
+<!--components/houtlist/houtlist.wxml-->
+<view class="houtheader">
+  <sectionheader title="{{title}}" bind:moreCLick="onrecommendMoreClick"></sectionheader>
+</view>
+<scroll-view class="houtSection" scroll-x  style="width: {{screenWidth}}px;">
+  <block wx:for="{{itemdata}}" wx:key="id">
+    <view class="item">
+      <houtlistitem itemData="{{item}}"></houtlistitem>
+    </view>
+  </block>
+</scroll-view>

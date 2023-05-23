@@ -1,0 +1,14 @@
+/* components/houtlist/houtlist.wxss */
+.item {
+  margin-left: 30rpx;
+  display:inline-block;
+  width: 213rpx;
+}
+
+.item:last-of-type{
+  margin-right: 30rpx;
+}
+.houtSection {
+  white-space: nowrap;
+  margin-left: -30rpx;
+}

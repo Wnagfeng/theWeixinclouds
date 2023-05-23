@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "houtlistitem": "/components/houtlistItem/houtlistitem",
+    "sectionheader":"/components/area-header/area-header"
+  }
+}
