@@ -1,0 +1,16 @@
+<view class="palylistV2Wrapper">
+  <view class="counter">
+    <view class="index">{{index}}</view>
+    <view class="songinfo">
+      <view class="name">{{itemData.name}}</view>
+      <view class="info">
+        <view class="infoinner">
+          <view class="icon">
+            <image src="../../assets/images/icons/sq_icon.png" mode="widthFix" />
+          </view>
+          <view class="singer">{{itemData.ar[0].name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

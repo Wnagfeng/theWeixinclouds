@@ -1,6 +1,5 @@
 /* components/video-list-item/video-list-item.wxss */
 .item {
-  margin-top: 40rpx;
   width: 100%;
 }
 

@@ -1,14 +1,14 @@
 <wxs src="../../utils/formart.wxs" module="formart" />
 <view class="houtitemlistwrapper">
-  <view class="item">
+  <view class="iteminner" bindtap="onsonglistitemclick">
     <view class="image">
       <image src="{{itemData.coverImgUrl}}" mode="widthFix" />
       <view class="playCount">
         {{ formart.Count(itemData.playCount) }}
       </view>
     </view>
-    <view class="info" >
-      <view class="name">{{itemData.name}}</view>
+    <view class="info">
+      {{itemData.name}}
     </view>
   </view>
 </view>

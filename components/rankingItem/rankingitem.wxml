@@ -1,0 +1,31 @@
+<wxs src="../../utils/formart.wxs" module="fmt"/>
+<view class="rankingItemWrapper" bindtap="onRankingItemTab">
+  <view class="list">
+    <view class="info">
+      <view class="title">
+        {{itemData.name}}
+      </view>
+      <block wx:for="{{3}}" wx:key="*this">
+        <view class="infoinner">
+          <view class="index">
+            {{item+1}}.
+          </view>
+          <view class="songname">
+            {{itemData.tracks[item].name}} —
+          </view>
+          <view class="singer">
+            {{itemData.tracks[item].ar[0].name}}
+          </view>
+        </view>
+
+      </block>
+    </view>
+    <view class="cover">
+      <image src="{{itemData.coverImgUrl}}" mode="widthFix" />
+      <view class="playcount">
+      {{fmt.Count(itemData.playCount) }}
+      </view>
+    </view>
+
+  </view>
+</view>

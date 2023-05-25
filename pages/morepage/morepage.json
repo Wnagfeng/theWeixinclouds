@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "palyListv2": "/components/playList-v2/playListV2",
+    "songlistItem": "/components/songlistItem/songlistItem"
+  }
 }

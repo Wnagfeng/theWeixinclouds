@@ -14,6 +14,9 @@ import {
 import {
   useRankingStore
 } from '../../stores/ReankingList'
+import {
+  usesugerlistStore
+} from '../../stores/surgeList'
 const qureySelectThorttle = throttle(getimgheigt, 100)
 const app = getApp()
 Page({
@@ -24,21 +27,22 @@ Page({
     Searchvalue: '',
     banners: [],
     bannerHeight: 0,
-    recommendlist: [],
+    recommendlist: [], //推荐歌曲数据
     houtplaylist: [],
     screenWidth: 375,
     screenHeight: 667,
-    recMenulist: []
+    recMenulist: [], //推荐歌单数据
+    rankingListData: {} //飙升榜单数据
   },
   onsearchCLick() {
     wx.navigateTo({
       url: '/pages/main-search/main-search',
     })
   },
-// 点击更多按钮跳转的页面
+  // 点击更多按钮跳转的页面
   onrecommendMoreClick() {
     wx.navigateTo({
-      url: '/pages/morepage/morepage',
+      url: '/pages/morepage/morepage?pagetype=recommendlist&pageID=recommend',
     })
   },
 
@@ -48,13 +52,23 @@ Page({
   onLoad(options) {
     this.getbannderdata()
     //  对公共数据的监听
-    useRankingStore.onState("recommendlist", (newvalue) => {
-      this.setData({
-        recommendlist: newvalue.slice(0, 6)
-      })
-    })
+    useRankingStore.onState("recommendlist", this.handelrecommendlist)
+
+
+    usesugerlistStore.onState("newRanking", this.handelnewRanking)
+    usesugerlistStore.onState("orginRanking", this.handelorginRanking)
+    usesugerlistStore.onState("upRanking", this.handelupRanking)
+
+
+    // test-----------
+    // 妈个比 在store那边把数据放到一起到这边直接使用 就是不行操蛋 2023年5月25日10:24:20 我感觉可能是监听深度问题可能数据没拿到但是在appdata中都能看见而且数据结构都是一样的为啥不给我使用 只能是我菜吧！
+    // usesugerlistStore.onState("rankinglistdata", this.handelAllrankinglistdata)
+    // test------------
+
+
     // 发请求获取公共数据
     useRankingStore.dispatch("fetchgetplaylistData")
+    usesugerlistStore.dispatch("fetchgetrankinglistdata")
     // 发请求获取热门歌单数据
     this.getHoutplaylistdata()
     // 发请求获取推荐歌单数据
@@ -67,19 +81,64 @@ Page({
   },
   // 在组件卸载以后我们需要取消监听
   onUnload() {
-    useRankingStore.offState("recommendlist", (newvalue) => {
-      this.setData({
-        recommendlist: newvalue.slice(0, 6)
-      })
+    useRankingStore.offState("recommendlist", this.handelrecommendlist)
+    usesugerlistStore.offState("newRanking", this.handelnewRanking)
+    usesugerlistStore.offState("orginRanking", this.handelorginRanking)
+    usesugerlistStore.offState("upRanking", this.handelupRanking)
+  },
+  // 监听的函数
+  handelrecommendlist(newvalue) {
+    this.setData({
+      recommendlist: newvalue?.tracks?.slice(0, 6)
     })
   },
+
+
+  handelnewRanking(newvalue) {
+    const NewrankingListData = {
+      ...this.data.rankingListData,
+      newRanking: newvalue
+    }
+    this.setData({
+      rankingListData: NewrankingListData
+    })
+  },
+  handelorginRanking(newvalue) {
+    const NewrankingListData = {
+      ...this.data.rankingListData,
+      orginRanking: newvalue
+    }
+    this.setData({
+      rankingListData: NewrankingListData
+    })
+  },
+  handelupRanking(newvalue) {
+    const NewrankingListData = {
+      ...this.data.rankingListData,
+      upRanking: newvalue
+    }
+    this.setData({
+      rankingListData: NewrankingListData
+    })
+  },
+
+
+  // test----------------
+  // handelAllrankinglistdata(newvalue) {
+  //   this.setData({
+  //     rankingListData: newvalue
+  //   })
+  // },
+  // test----------------
+
+
+  // 网络请求的函数
   async getbannderdata() {
     const res = await getBannerList()
     this.setData({
       banners: res.banners
     })
   },
-
   async onimgelod() {
     // 创建查询对象
     const res = await qureySelectThorttle(".imgs")

@@ -30,3 +30,12 @@ export function songListDetaile() {
     url: "/playlist/hot"
   })
 }
+
+export function getRankinglistData(id){
+  return WfrequestInstance.get({
+    url:"/playlist/detail",
+    data:{
+      id
+    }
+  })
+}

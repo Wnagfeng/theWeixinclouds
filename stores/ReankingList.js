@@ -2,8 +2,10 @@ import {
   HYEventStore
 } from 'hy-event-store'
 import {
-  getplaylist
+  getplaylist,
+  getRankinglistData
 } from '../service/music'
+
 export const useRankingStore = new HYEventStore({
   state: {
     recommendlist: []
@@ -11,7 +13,8 @@ export const useRankingStore = new HYEventStore({
   actions: {
     async fetchgetplaylistData(ctx) {
       const res = await getplaylist(3779629)
-      ctx.recommendlist=res.playlist.tracks
-    }
+      ctx.recommendlist = res.playlist
+    },
+   
   }
 })

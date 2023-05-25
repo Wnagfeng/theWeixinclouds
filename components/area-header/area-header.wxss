@@ -1,6 +1,7 @@
 /* components/area-header/area-header.wxss */
 .header{
   margin-top: 40rpx;
+  margin-bottom: 40rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;

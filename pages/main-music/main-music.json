@@ -4,7 +4,8 @@
     "sectionheader": "/components/area-header/area-header",
     "playlistV1": "/components/playList-v1/playlistv1",
     "houtlistitem": "/components/houtlistItem/houtlistitem",
-    "houtlist": "/components/houtlist/houtlist"
+    "houtlist": "/components/houtlist/houtlist",
+    "rankingitem": "/components/rankingItem/rankingitem"
 
   }
 }

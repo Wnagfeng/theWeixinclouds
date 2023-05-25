@@ -1,0 +1,39 @@
+<wxs src="/utils/formart.wxs" module="fmt" />
+<view class="wrapper" style="width: {{screenWidth}}px;">
+  <view class="bgcover">
+  <image class="ima" src="{{itemData.coverImgUrl}}" mode="widthFix"/>
+  </view>
+  <view class="inner">
+    <view class="top">
+      <view class="cover">
+        <image class="image" src="{{itemData.coverImgUrl}}" mode="widthFix" />
+      </view>
+      <view class="info">
+        <view class="title">
+          {{itemData.name}}
+        </view>
+        <view class="category">
+          <view class="avatar">
+            <image class="image" src="{{itemData.creator.avatarUrl}}" mode="widthFix" />
+          </view>
+          <text class="nickname">{{itemData.creator.nickname}}</text>
+        </view>
+        <view class="interdus">
+          简介:{{itemData.description}}
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="favor item">
+        <view class="count">
+          <image class="image" src="/assets/images/icons/favor_icon.png" mode="widthFix" />
+          <view class="subscribedCount">{{fmt.Count(itemData.playCount)}}</view>
+        </view>
+      </view>
+      <view class="search item">
+        <image class="image" src="/assets/images/icons/share_icon.png" mode="widthFix" />
+        <text class="searchtext">分享</text>
+      </view>
+    </view>
+  </view>
+</view>

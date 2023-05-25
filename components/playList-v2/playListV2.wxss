@@ -1,0 +1,26 @@
+/* components/playList-v2/playListV2.wxss */
+.palylistV2Wrapper{
+  margin-top: 40rpx;
+}
+.palylistV2Wrapper .counter{
+  display: flex;
+  align-items: center;
+}
+.palylistV2Wrapper .counter .index{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.palylistV2Wrapper .info{
+  display: flex;
+}
+.palylistV2Wrapper .info .infoinner{
+  display: flex;
+}
+.palylistV2Wrapper .info .icon{
+  margin-right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.palylistV2Wrapper .info .icon image{
+  width: 100%;
+}

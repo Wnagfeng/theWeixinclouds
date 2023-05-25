@@ -1,12 +1,14 @@
  function Count(playcount) {
    playcount = Number(playcount);
-   if (playcount > 1000000) {
-     return (playcount / 1000000).toFixed(1) + "亿"
+   if (playcount > 100000000) {
+     return (playcount / 100000000).toFixed(1) + "亿"
    } else if (playcount >= 10000) {
      return (playcount / 10000).toFixed(1) + "万"
    } else {
      playcount
    }
+
+
  }
 
 

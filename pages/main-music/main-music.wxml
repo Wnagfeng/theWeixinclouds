@@ -22,7 +22,18 @@
     </block>
   </view>
   <!-- 歌单的展示 -->
-  <houtlist itemdata="{{houtplaylist}}" title="热门歌单"></houtlist>
-  <houtlist itemdata="{{recMenulist}}" title="推荐歌单"></houtlist>
+  <view class="itemlistA">
+    <houtlist itemdata="{{houtplaylist}}" title="热门歌单"></houtlist>
+  </view>
+  <view class="itemlistB">
+    <houtlist itemdata="{{recMenulist}}" title="推荐歌单"></houtlist>
+  </view>
+  <view class="itemlistC">
+    <!-- 头部展示 -->
+    <sectionheader title="巅峰榜" isshowmore="{{false}}"></sectionheader>
+    <!-- 内容展示 -->
+    <block wx:for="{{rankingListData}}" wx:key="id">
+      <rankingitem itemData="{{item}}" keys="{{index}}"></rankingitem>
+    </block>
+  </view>
 </view>
-

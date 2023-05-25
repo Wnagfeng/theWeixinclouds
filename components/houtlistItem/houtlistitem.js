@@ -26,6 +26,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onsonglistitemclick() {
+      const itemID = this.properties.itemData.id
+      wx.navigateTo({
+        url: `/pages/morepage/morepage?pagetype=songitem&pageID=${itemID}`,
+      })
+    }
   }
 })
