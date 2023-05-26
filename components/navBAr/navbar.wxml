@@ -1,0 +1,19 @@
+<!--components/navBAr/navbar.wxml-->
+<view class="navbar">
+  <view class="left">
+    <!-- 预留插槽 -->
+    <slot name="left"></slot>
+    <!-- 左边插槽的默认值 -->
+  </view>
+  <view class="leftdefault">
+    LEFT
+  </view>
+  <view class="center">
+    <slot name="center"></slot>
+  </view>
+  <view class="centerdefault">
+    CENTER
+  </view>
+  <!-- 右边一般不放东西让他占个位置 -->
+  <view class="right"></view>
+</view>

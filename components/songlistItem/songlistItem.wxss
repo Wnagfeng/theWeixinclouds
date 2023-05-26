@@ -9,28 +9,33 @@
   margin-top: -24rpx;
   overflow: hidden;
 }
+
 .bgcover {
   margin-top: -70rpx;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   z-index: -1;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
   backdrop-filter: blur(5px);
 }
-.bgcover .ima{
+
+.wrapper .bgcover .ima {
   width: 100%;
-  background-color: rgba(0,0,0,.5);
-  backdrop-filter: blur(5px);
+  height: 100%;
+  background-color: black;
+  filter: blur(10rpx);
+  opacity: 0.5;
 }
-.inner{
+
+.inner {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
 }
+
 .top {
   width: 90%;
   display: flex;
@@ -92,35 +97,42 @@
   white-space: nowrap;
 }
 
-.bottom{
+.bottom {
   margin-top: 50rpx;
   width: 90%;
   align-items: center;
   justify-content: space-around;
   display: flex;
 }
-.bottom .item .image{
+
+.bottom .item .image {
   width: 100%;
 }
-.bottom .count{
+
+.bottom .count {
   display: flex;
   width: 180rpx;
 }
-.bottom .count .image{
+
+.bottom .count .image {
   width: 50rpx;
 }
-.bottom .search .image{
+
+.bottom .search .image {
   width: 50rpx;
 }
-.subscribedCount{
+
+.subscribedCount {
   margin-left: 20rpx;
 }
-.search{
+
+.search {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 180rpx;
 }
-.searchtext{
+
+.searchtext {
   margin-left: 20rpx;
 }

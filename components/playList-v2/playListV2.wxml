@@ -1,4 +1,4 @@
-<view class="palylistV2Wrapper">
+<view class="palylistV2Wrapper" bindtap="onsongitemlistclick">
   <view class="counter">
     <view class="index">{{index}}</view>
     <view class="songinfo">

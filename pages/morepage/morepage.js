@@ -23,6 +23,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const pagetype = options.pagetype
+    const pageID = options.pageID
+    this.data.pageID = pageID
+    this.data.pagetype = pagetype
     // 根据点击不同的类型去获取不同的数据
     // 根据传递过来的pagetype去监听数据的改变然后维护到data中
     console.log(options.pageID)
@@ -33,7 +37,7 @@ Page({
       this.data.pageID = pageID
       this.data.pagetype = pagetype
       usesugerlistStore.onState(pagetype, this.handelpagetype)
-    } else if (options.pageID === "recommen") {
+    } else if (options.pageID === "recommend") {
       const pagetype = options.pagetype
       const pageID = options.pageID
       this.data.pageID = pageID

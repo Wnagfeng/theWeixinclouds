@@ -1,0 +1,97 @@
+/* pages/songmusicPlay/songmusicplay.wxss */
+
+.bgcover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.bgcover .image {
+  width: 100%;
+  height: 100%;
+  filter: blur(18rpx);
+}
+
+.icon {
+  color: azure;
+  font-size: 40rpx;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tabs .item {
+  font-size: 30rpx;
+  color: rgb(141, 141, 141);
+}
+
+.tabs .active {
+  color: aliceblue;
+}
+
+.centericon {
+  color: darkgrey;
+  margin: 0 8rpx;
+}
+.music{
+  box-sizing: border-box;
+  padding: 40rpx;
+  font-size: 28rpx;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+/* 给 album  flex1 其他的内容自己撑起来 */
+.album{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* flex: 1; */
+}
+.album .image{
+  border-radius: 28rpx;
+}
+.info .name{
+  margin-top: 98rpx;
+  font-weight: 800;
+  font-size: 48rpx;
+}
+.info .singer{
+  text-align: center;
+  margin-top: 18rpx;
+}
+ .lyric{
+  margin-top: 48rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.proress{
+  margin-top: 50rpx;
+  width: 100%;
+}
+.time{
+  margin-left: 13rpx;
+  margin-right: 13rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.control{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  margin-right: 45rpx;
+}
+.control .play{
+  width: 150rpx;
+  height: 150rpx;
+}
+.btn{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 40rpx;
+}

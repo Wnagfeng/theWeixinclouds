@@ -1,0 +1,36 @@
+/* components/navBAr/navbar.wxss */
+.navbar {
+  /* 这东西的高度是固定的不会改变 */
+  height: 44px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.left,
+.right {
+  width: 120rpx;
+}
+
+.center {
+  flex: 1;
+}
+
+.left,
+.right,
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftdefault,
+.centerdefault {
+  display: none;
+}
+.left:empty+.leftdefault {
+  display: block;
+}
+
+.center:empty+.centerdefault {
+  display: block;
+}

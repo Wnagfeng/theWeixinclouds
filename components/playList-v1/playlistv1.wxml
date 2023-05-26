@@ -1,5 +1,5 @@
 <!--components/playList-v1/playlistv1.wxml-->
-<view class="playlistV1wrapper">
+<view class="playlistV1wrapper" bindtap="onsongitemclick">
   <view class="img">
     <image src="{{itemdata.al.picUrl}}" mode="widthFix" />
   </view>
