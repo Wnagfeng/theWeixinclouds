@@ -1,3 +1,4 @@
+<wxs src="../../utils/formart.wxs" module="fmt" />
 <view class="wrapper">
   <view class="bgcover">
     <image class="image" src="{{palysonginfo.al.picUrl}}" mode="aspectFill" />
@@ -28,24 +29,30 @@
         <view class="name">{{palysonginfo.name}}</view>
         <view class="singer">{{palysonginfo.ar[0].name}}</view>
       </view>
-      <view class="lyric">门前大桥下游过一群鸭？？？</view>
+      <view class="lyric">{{currentLyricText}}</view>
       <view class="proress">
-        <slider block-size="15"></slider>
+        <slider block-size="15" value="{{sliderValue}}" bindchanging="onsliderchangeing" bindchange="onsliderChange" />
         <view class="time">
-          <view class="cureent">03:22</view>
-          <view class="duration">04:44</view>
+          <view class="cureent">{{fmt.formatDuration(currenttitem) }}</view>
+          <view class="duration">{{ fmt.formatDuration(songduartion) }}</view>
         </view>
       </view>
       <view class="control">
         <image class="btn mode" src="/assets/images/player/play_order.png" mode="" />
-        <image class="btn prev" src="/assets/images/player/play_prev.png" mode="" />
-        <image class="btn play" src="/assets/images/player/play_pause.png" mode="" />
+        <image class="btn prev"  src="/assets/images/player/play_prev.png" mode="" />
+        <image class="btn play" bindtap="onbandplay" src="/assets/images/player/play_{{isplay ? 'pause' :'resume'}}.png" mode="" />
         <image class="btn next" src="/assets/images/player/play_next.png" mode="" />
         <image class="btn list" src="/assets/images/player/play_music.png" mode="" />
       </view>
     </swiper-item>
     <swiper-item>
-      歌词
+    <scroll-view class="lyric-list" scroll-y >
+      <block wx:for="{{palysonglyric}}" wx:key="time">
+        <view class="item">
+          {{item.content}}
+        </view>
+      </block>
+    </scroll-view>
     </swiper-item>
   </swiper>
 </view>
