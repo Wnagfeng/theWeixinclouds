@@ -8,7 +8,7 @@
   </view>
   <view class="palylist">
     <block wx:for="{{cureentPageData.tracks}}" wx:key="id">
-      <palyListv2 itemData="{{item}}" index="{{index+1}}"></palyListv2>
+      <palyListv2 itemData="{{item}}" index="{{index+1}}" bindtap="onplaylistV2Click" data-indey="{{index}}"></palyListv2>
     </block>
   </view>
 </view>

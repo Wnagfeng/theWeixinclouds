@@ -42,5 +42,8 @@ Page({
    */
   onReady() {
   },
+  onsonglistCLick(){
+    console.log(this.data.songlistdetail)
+  }
 
 })

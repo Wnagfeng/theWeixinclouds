@@ -1,4 +1,7 @@
 /* pages/songmusicPlay/songmusicplay.wxss */
+page {
+  overflow: hidden;
+}
 
 .bgcover {
   width: 100%;
@@ -35,7 +38,8 @@
   color: darkgrey;
   margin: 0 8rpx;
 }
-.music{
+
+.music {
   box-sizing: border-box;
   padding: 40rpx;
   font-size: 28rpx;
@@ -44,63 +48,87 @@
   align-items: center;
   flex-direction: column;
 }
+
 /* 给 album  flex1 其他的内容自己撑起来 */
-.album{
+.album {
   display: flex;
   justify-content: center;
   width: 100%;
   /* flex: 1; */
 }
-.album .image{
+
+.album .image {
   border-radius: 28rpx;
 }
-.info .name{
+
+.info .name {
   margin-top: 98rpx;
   font-weight: 800;
   font-size: 48rpx;
 }
-.info .singer{
+
+.info .singer {
   text-align: center;
   margin-top: 18rpx;
 }
- .lyric{
+
+.lyric {
   margin-top: 48rpx;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.proress{
+
+.proress {
   margin-top: 50rpx;
   width: 100%;
 }
-.time{
+
+.time {
   margin-left: 13rpx;
   margin-right: 13rpx;
   display: flex;
   justify-content: space-between;
 }
-.control{
+
+.control {
   display: flex;
   align-items: center;
   margin-top: 20rpx;
   margin-right: 45rpx;
 }
-.control .play{
+
+.control .play {
   width: 150rpx;
   height: 150rpx;
 }
-.btn{
+
+.btn {
   width: 80rpx;
   height: 80rpx;
   margin-left: 40rpx;
 }
+
 .lyric-list {
-  color: rgb(107, 105, 105);
+  color: rgb(0, 0, 0);
   text-align: center;
-  height: 100%;
+  height: 99vh;
 }
+
+.lyric-list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
 .lyric-list .item {
   height: 80rpx;
   line-height: 80rpx;
+}
+
+.lyric-list .item.active {
+  color: rgb(255, 0, 0);
+  font-size: 40rpx;
 }

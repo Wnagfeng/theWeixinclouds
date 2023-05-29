@@ -21,6 +21,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onbackclick(){
+      console.log("111")
+      this.triggerEvent("leftclick")
+    }
   }
 })

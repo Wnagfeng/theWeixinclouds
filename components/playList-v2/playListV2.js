@@ -30,6 +30,7 @@ Component({
       wx.navigateTo({
         url: `/pages/songmusicPlay/songmusicplay?id=${id}`,
       })
-    }
+      console.log(this.properties.itemData)
+    },
   }
 })

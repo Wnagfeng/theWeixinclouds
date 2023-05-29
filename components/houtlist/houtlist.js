@@ -44,6 +44,6 @@ Component({
       wx.navigateTo({
         url: '/pages/songListDetalile/songListDetalile',
       })
-    },
+    }
   }
 })

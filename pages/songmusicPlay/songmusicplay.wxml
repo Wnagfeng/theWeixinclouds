@@ -4,8 +4,8 @@
     <image class="image" src="{{palysonginfo.al.picUrl}}" mode="aspectFill" />
   </view>
   <view class="state" style="height: {{statusBarHeight}}px"></view>
-  <navBar>
-    <view slot="left">
+  <navBar bind:leftclick="onbackclick">
+    <view slot="left" >
       <van-icon name="arrow-left" class="icon" />
     </view>
     <view slot="center">
@@ -38,21 +38,23 @@
         </view>
       </view>
       <view class="control">
-        <image class="btn mode" src="/assets/images/player/play_order.png" mode="" />
-        <image class="btn prev"  src="/assets/images/player/play_prev.png" mode="" />
+        <image wx:if="{{playmoundINdex===0}}" class="btn mode" src="/assets/images/player/play_order.png" mode="" bindtap="playmoundindexCLick" />
+        <image wx:if="{{playmoundINdex===1}}" class="btn mode" src="/assets/images/player/play_repeat.png" mode="" bindtap="playmoundindexCLick" />
+        <image wx:if="{{playmoundINdex===2}}" class="btn mode" src="/assets/images/player/play_random.png" mode="" bindtap="playmoundindexCLick" />
+        <image class="btn prev" bindtap="onprevCLick" src="/assets/images/player/play_prev.png" mode="" />
         <image class="btn play" bindtap="onbandplay" src="/assets/images/player/play_{{isplay ? 'pause' :'resume'}}.png" mode="" />
-        <image class="btn next" src="/assets/images/player/play_next.png" mode="" />
+        <image class="btn next" bindtap="onnextCLick" src="/assets/images/player/play_next.png" mode="" />
         <image class="btn list" src="/assets/images/player/play_music.png" mode="" />
       </view>
     </swiper-item>
     <swiper-item>
-    <scroll-view class="lyric-list" scroll-y >
-      <block wx:for="{{palysonglyric}}" wx:key="time">
-        <view class="item">
-          {{item.content}}
-        </view>
-      </block>
-    </scroll-view>
+      <scroll-view class="lyric-list" scroll-y scroll-top="{{lyricScrollTop}}" scroll-with-animation>
+        <block wx:for="{{palysonglyric}}" wx:key="time">
+          <view class="item {{index===currentLyricIndex? 'active' :''}}" style="padding-top: {{index===0? (currentpageheight/2-66):0}}px; padding-bottom: {{index===palysonglyric.length-1? (currentpageheight/2+66):0}}px;">
+            {{item.content}}
+          </view>
+        </block>
+      </scroll-view>
     </swiper-item>
   </swiper>
 </view>

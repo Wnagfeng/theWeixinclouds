@@ -1,6 +1,6 @@
 <!--components/navBAr/navbar.wxml-->
 <view class="navbar">
-  <view class="left">
+  <view class="left" bindtap="onbackclick">
     <!-- 预留插槽 -->
     <slot name="left"></slot>
     <!-- 左边插槽的默认值 -->

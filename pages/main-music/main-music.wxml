@@ -18,7 +18,7 @@
   <!-- 推荐的歌曲展示 -->
   <view class="playlist">
     <block wx:for="{{recommendlist}}" wx:key="id">
-      <playlistV1 itemdata="{{item}}"></playlistV1>
+      <playlistV1 itemdata="{{item}}" bindtap="onplaylistV1Click" data-indey="{{index}}"></playlistV1>
     </block>
   </view>
   <!-- 歌单的展示 -->

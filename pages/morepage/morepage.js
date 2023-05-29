@@ -8,6 +8,9 @@ import {
 import {
   getplaylist
 } from '../../service/music'
+import {
+  useplatListstore
+} from '../../stores/palyList'
 Page({
 
   /**
@@ -97,32 +100,8 @@ Page({
       usesugerlistStore.offState(pagetype, this.handelpagetype)
     }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onplaylistV2Click(event) {
+    useplatListstore.setState("playListData", this.data.cureentPageData.tracks)
+    useplatListstore.setState("playLiseIndex", event.currentTarget.dataset.indey)
   }
 })

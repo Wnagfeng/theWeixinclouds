@@ -9,6 +9,10 @@ import {
 import {
   parseLyric
 } from '../../utils/lyric-parse'
+import {
+  useplatListstore
+} from '../../stores/palyList'
+
 const app = getApp()
 // 创建播放上下文
 const audioCOntete = wx.createInnerAudioContext()
@@ -25,12 +29,17 @@ Page({
     statusBarHeight: 40,
     cureentpageindex: 0,
     currentpageheight: 0,
+    lyricScrollTop: 0,
     currenttitem: 0,
     songduartion: 0,
     sliderValue: 0,
     isChangeing: false,
     iswaite: false,
-    isplay: true
+    isplay: true,
+    playListData: [],
+    playlistIndex: 0,
+    isFristPlay: true,
+    playmoundINdex: 0
   },
 
   /**
@@ -38,6 +47,11 @@ Page({
    */
   onLoad(options) {
     const id = options.id
+    this.setuppalySong(id)
+    useplatListstore.onStates(["playListData", "playLiseIndex"], this.handelplaylistdata)
+  },
+  // 抽取播放的逻辑 传入id进行歌曲的播放 因为当有新的id需要播放的时候我们需要重新调用播放逻辑 比如获取歌词 获取音乐src设置播放上下文的src等等所以建议直接抽取函数当有id的时候直接给我全部执行一遍
+  setuppalySong(id) {
     this.setData({
       songId: id
     })
@@ -49,16 +63,25 @@ Page({
       currentpageheight: app.globalData.currentpageheight
     })
     // 播放当前歌曲
+    audioCOntete.stop() //播放上一首前先停掉当前的播放
     audioCOntete.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     audioCOntete.autoplay = true
     const palysongCruurenttime = audioCOntete.currentTime
-    const throttleUpdata = throttle(this.uodata, 800, {
+    const throttleUpdata = throttle(this.updata, 800, {
       leading: false,
       trailing: false
     })
     this.setData({
       currenttitem: palysongCruurenttime * 1000
     })
+    // 播放歌曲的监听
+    if (this.data.isFristPlay) {
+
+    }
+    this.setData({
+      isFristPlay: false
+    })
+    // 这些监听我们只需要添加一次就行
     // 监听播放的时间
     audioCOntete.onTimeUpdate((res) => {
       if (!this.data.isChangeing && !this.data.iswaite) {
@@ -77,7 +100,9 @@ Page({
       if (index === this.data.currentLyricIndex) return
       this.setData({
         currentLyricIndex: index,
-        currentLyricText: this.data.palysonglyric[index].content
+        currentLyricText: this.data.palysonglyric[index].content,
+        // 根据当前的index去计算歌词需要滚动的位置 设置过去在页面中直接拿到数据就行 
+        lyricScrollTop: 40 * index
       })
       if (audioCOntete.paused) {
         this.setData({
@@ -89,8 +114,10 @@ Page({
         })
       }
     })
+
   },
-  uodata() {
+  // 对切换音乐进度进行节流
+  updata() {
     // 记录一下当前的播放时间
     const palysongCruurenttime = audioCOntete.currentTime
     // 获取到当前的歌曲总时间
@@ -101,6 +128,19 @@ Page({
     const sliderValue = this.data.currenttitem / this.data.songduartion * 100
     this.setData({
       sliderValue: sliderValue
+    })
+    // bug处理 当点击完成以后时间就不在改变了
+    // bug原因 他的监听在你改变进度以后就监听不到了 这个就很难受所以我们需要在改变进度以后重新让他监听起来
+    audioCOntete.onWaiting(() => {
+      // 在等待过程中先暂停播放
+      audioCOntete.pause()
+    })
+    // 等到你可以播放的时候在播放一下
+    audioCOntete.onCanplay(() => {
+      audioCOntete.play()
+    })
+    audioCOntete.onEnded(() => {
+      this.changenewSong()
     })
   },
   onsliderChange(event) {
@@ -181,6 +221,74 @@ Page({
         isplay: true
       })
     }
-  }
+  },
+  handelplaylistdata(value) {
+    console.log("监听到了数据的获取，准备播放该列表")
+    if (value.playListData) {
+      this.setData({
+        playListData: value.playListData
+      })
+    }
+    if (value.playLiseIndex !== undefined) {
+      this.setData({
+        playlistIndex: value.playLiseIndex
+      })
+    }
 
+  },
+  onprevCLick() {
+    this.changenewSong(false)
+  },
+  onnextCLick() {
+    this.changenewSong(true)
+  },
+  changenewSong(isNext) {
+    const length = this.data.playListData.length
+    let index = this.data.playlistIndex
+    switch (this.data.playmoundINdex) {
+      case 0:
+        index = isNext ? index + 1 : index - 1
+        // 边界的判断
+        if (index == length) index = 0
+        if (index == -1) index = length - 1
+        break
+      case 1:
+        break
+      case 2:
+        index = Math.floor(Math.random() * length)
+        break
+    }
+
+
+    // 更新store
+    const currentSong = this.data.playListData[index]
+    useplatListstore.setState("playLiseIndex", index)
+    const currentsongId = currentSong.id
+    // 拿到id去播放音乐
+    // 清空数据
+    this.setData({
+      currenttitem: 0,
+      songduartion: 0,
+      sliderValue: 0,
+      palysonginfo: {}
+    })
+    this.setuppalySong(currentsongId)
+  },
+  playmoundindexCLick() {
+    let modeIndex = this.data.playmoundINdex
+    modeIndex = modeIndex + 1
+    if (modeIndex === 3) {
+      modeIndex = 0
+    }
+    this.setData({
+      playmoundINdex: modeIndex
+    })
+    console.log(modeIndex)
+  },
+  // 点击按钮返回上一级
+  onbackclick() {
+    console.log("111222")
+    wx.navigateBack()
+  },
+  // 在组件销毁的时候把数据给我干掉
 })

@@ -5,7 +5,7 @@
 <scroll-view class="houtSection" scroll-x  style="width: {{screenWidth}}px;">
   <block wx:for="{{itemdata}}" wx:key="id">
     <view class="item">
-      <houtlistitem itemData="{{item}}"></houtlistitem>
+      <houtlistitem itemData="{{item}}" ></houtlistitem>
     </view>
   </block>
 </scroll-view>

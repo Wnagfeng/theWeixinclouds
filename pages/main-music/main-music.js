@@ -3,6 +3,9 @@ import {
   getimgheigt
 } from '../../utils/getimgheight'
 import {
+  useplatListstore
+} from '../../stores/palyList'
+import {
   getBannerList,
   getHoutplaylist,
   getplaylist,
@@ -160,5 +163,12 @@ Page({
     this.setData({
       recMenulist: res.playlists
     })
+  },
+
+  // 歌单点击事件的处理
+  onplaylistV1Click(event) {
+    useplatListstore.setState("playListData", this.data.recommendlist)
+    useplatListstore.setState("playLiseIndex", event.currentTarget.dataset.indey)
   }
+
 })
