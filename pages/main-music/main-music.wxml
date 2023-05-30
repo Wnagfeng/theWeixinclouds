@@ -36,4 +36,22 @@
       <rankingitem itemData="{{item}}" keys="{{index}}"></rankingitem>
     </block>
   </view>
+
+  <!-- 播放工具栏 -->
+  <view class="playBar" wx:if="{{currentSong.name}}">
+    <view class="info">
+      <view class="cover playBaranimation" style="animation-play-state: {{isplay ? 'running' :'paused'}};" bindtap="oninfoClick">
+        <image class="image" src="{{currentSong.al.picUrl}}" mode="widthFix" />
+      </view>
+      <view class="name">{{currentSong.name}}</view>
+    </view>
+    <view class="contrl">
+      <view class="play " bindtap="oncurrentplayClick">
+        <image class="image" src="../../assets/music/{{isplay?'pause':'play'}}_icon.png" mode="widthFix" />
+      </view>
+      <view class="list">
+        <image class="image" src="../../assets/music/playlist_icon.png" mode="widthFix" />
+      </view>
+    </view>
+  </view>
 </view>

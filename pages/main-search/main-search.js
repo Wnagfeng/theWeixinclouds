@@ -1,11 +1,15 @@
-// pages/main-search/main-search.js
+import {
+  getsearchData
+} from '../../service/search'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    Searchvalue: '',
+    searchkeys: '',
+    searchSongs: {}
   },
 
   /**
@@ -14,53 +18,22 @@ Page({
   onLoad(options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onsearchCLick(event) {
+    this.setData({
+      searchkeys: event.detail
+    })
+    this.getsearchData(event.detail)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  search(event) {
+    this.getsearchData(this.data.searchkeys)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  async getsearchData(key) {
+    const res = await getsearchData(key)
+    if (res.result.songs) {
+      this.setData({
+        searchSongs: res.result.songs
+      })
+    }
 
   }
 })

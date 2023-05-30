@@ -40,5 +40,7 @@ audioCOntete.onCanplay(() => {
 })
 ```
 
+### 对代码的逻辑进行抽取 play页面只是负责播放的展示播放的逻辑放到store下面
+
 
 

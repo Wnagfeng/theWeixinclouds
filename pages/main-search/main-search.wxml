@@ -1,2 +1,10 @@
-
-<van-search shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" bind:click-input="onsearchCLick" focus="true"/>
+<view class="wrapper">
+  <van-search shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" bind:click-input="onsearchCLick" focus="true" value="{{ Searchvalue }}" bind:search="onsearchCLick" use-action-slot>
+    <view slot="action" class="search" bindtap="search">搜索</view>
+  </van-search>
+  <view class="info">
+    <block wx:for="{{searchSongs}}" wx:key="{{id}}">
+      <playlistV2 itemData="{{item}}" index="{{index+1}}"></playlistV2>
+    </block>
+  </view>
+</view>

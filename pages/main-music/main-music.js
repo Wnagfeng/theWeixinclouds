@@ -20,6 +20,7 @@ import {
 import {
   usesugerlistStore
 } from '../../stores/surgeList'
+
 const qureySelectThorttle = throttle(getimgheigt, 100)
 const app = getApp()
 Page({
@@ -35,7 +36,9 @@ Page({
     screenWidth: 375,
     screenHeight: 667,
     recMenulist: [], //推荐歌单数据
-    rankingListData: {} //飙升榜单数据
+    rankingListData: {}, //飙升榜单数据
+    currentSong: {}, //当前正在播放的音乐
+    isplay: false
   },
   onsearchCLick() {
     wx.navigateTo({
@@ -56,12 +59,10 @@ Page({
     this.getbannderdata()
     //  对公共数据的监听
     useRankingStore.onState("recommendlist", this.handelrecommendlist)
-
-
     usesugerlistStore.onState("newRanking", this.handelnewRanking)
     usesugerlistStore.onState("orginRanking", this.handelorginRanking)
     usesugerlistStore.onState("upRanking", this.handelupRanking)
-
+    useplatListstore.onStates(["palysonginfo", "isplay"], this.handelCurrentsongData)
 
     // test-----------
     // 妈个比 在store那边把数据放到一起到这边直接使用 就是不行操蛋 2023年5月25日10:24:20 我感觉可能是监听深度问题可能数据没拿到但是在appdata中都能看见而且数据结构都是一样的为啥不给我使用 只能是我菜吧！
@@ -122,6 +123,23 @@ Page({
     }
     this.setData({
       rankingListData: NewrankingListData
+    })
+  },
+  handelCurrentsongData({
+    palysonginfo,
+    isplay
+  }) {
+    this.setData({
+      currentSong: palysonginfo,
+      isplay: isplay
+    })
+  },
+  oncurrentplayClick() {
+    useplatListstore.dispatch("playmusicState")
+  },
+  oninfoClick() {
+    wx.navigateTo({
+      url: '/pages/songmusicPlay/songmusicplay',
     })
   },
 

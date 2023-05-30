@@ -1,6 +1,7 @@
 /* pages/main-music/main-music.wxss */
 .Musicwrapper {
   padding: 30rpx;
+  padding-bottom: 118rpx;
 }
 
 .banner .imgs {
@@ -13,4 +14,76 @@
   border-radius: 18rpx;
   overflow: hidden;
   margin-top: 20rpx;
+}
+
+.playBar {
+  width: 100%;
+  margin-left: -30rpx;
+  position: fixed;
+  bottom: 0;
+  margin-top: 20rpx;
+  height: 88rpx;
+  background-color: rgb(145, 212, 212);
+}
+
+.playBar .info .cover {
+  position: relative;
+  top: -10rpx;
+  left: 4rpx;
+  width: 110rpx;
+}
+
+.playBar .info .name {
+  margin-left: 20rpx;
+}
+
+.playBar .info .cover .image {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.contrl .play {
+  position: relative;
+  top: 8rpx;
+  width: 80rpx;
+  right: 10rpx;
+}
+
+.contrl .play .image {
+  width: 100%;
+}
+
+.contrl .list {
+  width: 90rpx;
+}
+
+.contrl .list .image {
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.contrl {
+  display: flex;
+}
+
+.playBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@keyframes roateanimation {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+  transform: rotate(360deg);
+  }
+}
+.playBaranimation {
+  animation: roateanimation 10s linear infinite ;
 }

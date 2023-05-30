@@ -1,1 +1,4 @@
 /* pages/main-search/main-search.wxss */
+.wrapper{
+  margin: 24rpx;
+}
