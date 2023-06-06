@@ -36,6 +36,11 @@ Component({
         })
         useSongsStore.dispatch("fetchMenulistAction")
       }
+    },
+    onitemclick() {
+      wx.navigateTo({
+        url: "/pages/morepage/morepage?type=songs"
+      })
     }
   }
 })

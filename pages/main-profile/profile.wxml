@@ -40,8 +40,8 @@
     </van-dialog>
   </view>
   <view class="songsList">
-    <block wx:for="{{songs}}">
-      <songsItem Itemdata="{{item}}">11</songsItem>
+    <block wx:for="{{songs}}" wx:key="_id">
+      <songsItem Itemdata="{{item}}" bindtap="onitemCLick" data-songs="{{item}}"></songsItem>
     </block>
   </view>
 </view>

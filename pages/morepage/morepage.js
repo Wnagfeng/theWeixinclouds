@@ -14,7 +14,11 @@ import {
 import {
   useSongsStore
 } from '../../stores/songs'
+import {
+  Songscollection
+} from '../../dataBase/index'
 const db = wx.cloud.database()
+const songsCollection = db.collection("Songs")
 Page({
 
   /**
@@ -71,6 +75,11 @@ Page({
       })
       this.handelProfileLCick(type, title)
       // 当来到这里后我们需要去云数据库中请求我们的存储数据
+    } else if (options.type === "songs") {
+      const songsid = options.songsid
+      // 根据传递进来的id去请求数据进行展示
+      this.handelSongsData(songsid)
+
     }
 
     // 对歌单数据的监听
@@ -89,6 +98,19 @@ Page({
       })
     }
 
+  },
+  async handelSongsData(songsid) {
+    const id = songsid
+    console.log(id)
+    const res = await songsCollection.doc(songsid).get()
+    const songsname = res.data.name
+    const songsdata = res.data.songs
+    this.setData({
+      cureentPageData: {
+        name: songsname,
+        tracks: songsdata
+      }
+    })
   },
   async fetchgetgetplaylistData(id) {
     const res = await getplaylist(id)
@@ -109,7 +131,7 @@ Page({
   },
   handelSongs(value) {
     this.setData({
-      songs:value
+      songs: value
     })
   },
   /**

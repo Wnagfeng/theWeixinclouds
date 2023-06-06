@@ -92,6 +92,14 @@ Page({
       isshowDialog: true
     })
   },
+  onitemCLick(event) {
+    const songs=event.currentTarget.dataset.songs
+    // 跳转页面拿到当当前的歌单数据并且进行展示
+    wx.navigateTo({
+      url:`/pages/morepage/morepage?type=songs&songsid=${songs._id}`
+    })
+
+  },
   async onConfirmTab() {
     // 获取创建的歌单名称 
     const menuName = this.data.menuName
