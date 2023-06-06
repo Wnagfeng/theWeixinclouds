@@ -16,6 +16,10 @@ App({
         this.globalData.currentpageheight = result.screenHeight - result.statusBarHeight - 44
       }
     })
+    wx.cloud.init({
+      env:"cloud1-3gv35x4w23c6e76c"
+    })
   }
+  
 
 })

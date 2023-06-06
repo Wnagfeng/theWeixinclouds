@@ -1,0 +1,26 @@
+/* components/songsItem/index.wxss */
+.img{
+  width: 120rpx;
+}
+.image{
+  width: 100%;
+}
+.inner{
+  display: flex;
+  align-items: center;
+}
+.info{
+  margin-left: 30rpx;
+}
+.info{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.icon{
+  margin-right: 60rpx;
+}
+.image{
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+}

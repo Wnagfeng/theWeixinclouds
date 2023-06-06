@@ -11,6 +11,10 @@ import {
 import {
   useplatListstore
 } from '../../stores/palyList'
+import {
+  useSongsStore
+} from '../../stores/songs'
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -19,7 +23,8 @@ Page({
   data: {
     cureentPageData: {},
     pageID: "",
-    pagetype: ""
+    pagetype: "",
+    songs: []
   },
 
   /**
@@ -29,7 +34,6 @@ Page({
     const pagetype = options.pagetype
     const pageID = options.pageID
     this.data.pageID = pageID
-    this.data.pagetype = pagetype
     // 根据点击不同的类型去获取不同的数据
     // 根据传递过来的pagetype去监听数据的改变然后维护到data中
     console.log(options.pageID)
@@ -38,13 +42,17 @@ Page({
       const pagetype = options.pagetype
       const pageID = options.pageID
       this.data.pageID = pageID
-      this.data.pagetype = pagetype
+      this.setData({
+        pagetype: pagetype
+      })
       usesugerlistStore.onState(pagetype, this.handelpagetype)
     } else if (options.pageID === "recommend") {
       const pagetype = options.pagetype
       const pageID = options.pageID
       this.data.pageID = pageID
-      this.data.pagetype = pagetype
+      this.setData({
+        pagetype: pagetype
+      })
       useRankingStore.onState(pagetype, this.handelpagetype)
     } else if (options.pagetype === "songitem") {
       const pagetype = options.pagetype
@@ -55,7 +63,18 @@ Page({
       })
       const id = options.pageID
       this.fetchgetgetplaylistData(id)
+    } else if (options.pagetype === "profile") {
+      const type = options.type
+      const title = options.title
+      this.setData({
+        pagetype: pagetype
+      })
+      this.handelProfileLCick(type, title)
+      // 当来到这里后我们需要去云数据库中请求我们的存储数据
     }
+
+    // 对歌单数据的监听
+    useSongsStore.onState("songlist", this.handelSongs)
 
   },
 
@@ -77,6 +96,22 @@ Page({
       cureentPageData: res.playlist
     })
   },
+  async handelProfileLCick(type, title) {
+    // 动态获取数据
+    const collection = db.collection(type)
+    const res = await collection.get()
+    this.setData({
+      cureentPageData: {
+        name: title,
+        tracks: res.data
+      }
+    })
+  },
+  handelSongs(value) {
+    this.setData({
+      songs:value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -89,6 +124,9 @@ Page({
    */
   onShow() {
 
+  },
+  onUnload() {
+    useSongsStore.offState("songlist", this.handelSongs)
   },
 
   /**

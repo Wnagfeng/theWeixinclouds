@@ -1,14 +1,18 @@
 <!--这里留个推荐音乐和巅峰榜三个音乐列表-->
+<!-- 这里是播放页的主要逻辑其他的页面主要是通过这个页面进行展示数据 建议在这里获取歌单数据并且传递给 playlistv2 进行展示 -->
 <view class="morepageWrapper">
-  <view class="header" wx:if="{{pagetype==='songitem'}}" wx:if="{{cureentPageData}}">
-  <songlistItem itemData="{{cureentPageData}}"></songlistItem>
+
+  <view class="header {{pagetype == 'songitem' ? '' :'hidden'}}"  wx:if="{{cureentPageData}}">
+    <songlistItem itemData="{{cureentPageData}}"></songlistItem>
   </view>
-  <view class="title" wx:else>
+
+  <view class="title {{pagetype !== 'songitem' ? 'show' :'hidden'}}" >
     {{cureentPageData.name}}
   </view>
+
   <view class="palylist">
     <block wx:for="{{cureentPageData.tracks}}" wx:key="id">
-      <palyListv2 itemData="{{item}}" index="{{index+1}}" bindtap="onplaylistV2Click" data-indey="{{index}}"></palyListv2>
+      <palyListv2 itemData="{{item}}" index="{{index+1}}" bindtap="onplaylistV2Click" data-indey="{{index}}" songs="{{songs}}"></palyListv2>
     </block>
   </view>
 </view>

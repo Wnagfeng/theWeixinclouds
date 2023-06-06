@@ -1,6 +1,8 @@
 /* components/playList-v2/playListV2.wxss */
 .palylistV2Wrapper{
   margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
 }
 .palylistV2Wrapper .counter{
   display: flex;
@@ -23,4 +25,8 @@
 }
 .palylistV2Wrapper .info .icon image{
   width: 100%;
+}
+.moreicon{
+  margin-right: 30rpx;
+  font-size: 40rpx;
 }

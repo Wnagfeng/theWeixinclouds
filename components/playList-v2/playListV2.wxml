@@ -13,4 +13,7 @@
       </view>
     </view>
   </view>
+  <view class="moreicon" catchtap="onMoreTabClick">
+    <van-icon name="chat-o" />
+  </view>
 </view>

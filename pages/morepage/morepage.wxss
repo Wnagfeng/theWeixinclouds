@@ -6,3 +6,9 @@
   font-size: 40rpx;
   font-weight: 700;
 }
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}

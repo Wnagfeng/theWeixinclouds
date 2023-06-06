@@ -8,6 +8,7 @@ import {
 import {
   parseLyric
 } from '../utils/lyric-parse'
+import {historycollection} from '../dataBase/index'
 export const audioCOntete = wx.createInnerAudioContext()
 
 export const useplatListstore = new HYEventStore({
@@ -24,7 +25,6 @@ export const useplatListstore = new HYEventStore({
     currenttitem: 0,
     playmodeIndex: 0,
     sliderValue: 0
-
   },
   actions: {
     // 需要播放音乐把id传递过来
@@ -41,6 +41,7 @@ export const useplatListstore = new HYEventStore({
       getpalysonginfo(id).then((res) => {
         ctx.palysonginfo = res.songs[0],
           ctx.songduartion = res.songs[0].dt
+          historycollection.add(ctx.palysonginfo)
       })
       getpalysonglyric(id).then((res) => {
         ctx.palysonglyric = parseLyric(res.lrc.lyric)

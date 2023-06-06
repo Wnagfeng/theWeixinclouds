@@ -1,0 +1,47 @@
+<view class="wrapper">
+  <view class="Loginwrapper" bindtap="onLoginTab">
+    <view class="cover">
+      <image class="image" src="{{islogion ? userInfo.avatarUrl : '/assets/profile/avatar_placeholder.png'}}" mode="widthFix" />
+    </view>
+    <view class="name">
+      {{islogion ? userInfo.nickName : '请登录'}}
+    </view>
+  </view>
+  <view class="ctrlWrapper">
+    <view class="favor" bindtap="onfavorClick">
+      <image class="image" src="/assets/profile/favor.png" mode="widthFix" />
+      <view class="text">
+        我的收藏
+      </view>
+    </view>
+    <view class="like" bindtap="onlikeClick">
+      <image class="image" src="/assets/profile/like.png" mode="widthFix" />
+      <view class="text">
+        我的喜欢
+      </view>
+    </view>
+    <view class="history" bindtap="onHistoryClick">
+      <image class="image" src="/assets/profile/history.png" mode="widthFix" />
+      <view class="text">
+        历史记录
+      </view>
+    </view>
+  </view>
+  <view class="header">
+    <header title="我的歌单" isshowmore="{{false}}"></header>
+    <view class="songs">
+      <view class="title">创建歌单</view>
+      <view class="add" bindtap="onaddCLick">
+        <van-icon name="plus" />
+      </view>
+    </view>
+    <van-dialog use-slot title="新建歌单" show="{{ isshowDialog }}" bind:confirm="onConfirmTab" bind:close="onClose" show-cancel-button>
+      <input type="text" model:value="{{menuName}}" placeholder="请输入歌单名称" style="margin: 0 40rpx; padding: 30rpx;" />
+    </van-dialog>
+  </view>
+  <view class="songsList">
+    <block wx:for="{{songs}}">
+      <songsItem Itemdata="{{item}}">11</songsItem>
+    </block>
+  </view>
+</view>

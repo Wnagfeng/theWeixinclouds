@@ -1,0 +1,50 @@
+/* pages/main-profile/profile.wxss */
+.wrapper {
+  margin: 30rpx;
+}
+
+.Loginwrapper {
+  margin-top: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.Loginwrapper .cover {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.Loginwrapper .cover .image {
+  width: 100%;
+}
+
+.name {
+  margin-left: 30rpx;
+  font-size: 40rpx;
+}
+
+.ctrlWrapper {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  margin-top: 160rpx;
+}
+
+.favor,
+.like,
+.history {
+  width: 120rpx;
+}
+.image{
+  width: 100%;
+}
+.text{
+  margin-top: 20rpx;
+}
+.songs{
+  display: flex;
+  justify-content: space-between;
+}
+.add {
+  margin-right: 60rpx;
+}

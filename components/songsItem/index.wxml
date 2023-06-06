@@ -1,0 +1,25 @@
+<view class="wrapper">
+
+    <view class="inner">
+      <view class="img">
+        <view wx:if="{{Itemdata.songs[0]}}">
+          <image class="image" src="{{Itemdata.songs[0].al.picUrl}}" mode="widthFix" />
+        </view>
+        <view wx:else>
+          <image class="image" src="/assets/profile/music.png" mode="widthFix" />
+        </view>
+      </view>
+      <view class="info">
+        <view class="songsinfo">
+          <view class="songsname">{{Itemdata.name}}</view>
+          <view class="length">
+            {{Itemdata.songs.length}}首
+          </view>
+        </view>
+        <view class="icon" bindtap="ondeleteClick">
+          <van-icon name="delete-o" />
+        </view>
+      </view>
+    </view>
+
+</view>
